@@ -92,3 +92,12 @@ services:
 
 
 ```
+This compose file creates two containers - 1 for the db and 1 for the app
+
+The image used for the db is the base mongo image whereas with the web, the Dockerfile in the app folder is to be used. 
+
+We then state which ports need to be allowed for the app/db to be run on.
+
+Environment variables can also be set within this file also.
+
+Since a link has been made between the two services using the depends_on clause, you can refer to the mongodb database by using mongodb://db:27017/posts. Usually we use localhost but in this situation we want to refer to the internal network created by docker.

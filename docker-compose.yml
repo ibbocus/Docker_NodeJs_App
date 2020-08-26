@@ -5,8 +5,8 @@ services:
     image: mongo
     restart: always
     ports: [27017:27017]
-#    volumes:
-#      - 'db:/data/db'
+    volumes:
+      - 'db:/data/db'
 
   web:
     build: ./app
@@ -16,7 +16,5 @@ services:
       - DB_HOST=mongodb://db:27017/posts
     depends_on:
       - db
- #   volumes:
-#      - '.:/app'
-#volumes:
- # db: {}
+volumes:
+  db: 
