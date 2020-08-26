@@ -1,4 +1,5 @@
 version: '3'
+
 services:
   db:
     image: mongo
@@ -9,13 +10,12 @@ services:
 
   web:
     build: ./app
-#    restart: always
+    restart: always
     ports: [3000:3000]
     environment:
       - DB_HOST=mongodb://db:27017/posts
     depends_on:
       - db
-    command: node seeds/seed.js
  #   volumes:
 #      - '.:/app'
 #volumes:

@@ -16,7 +16,7 @@ RUN npm install
 
 # copy everything from current location to default location inside the container
 
-COPY ./app .
+COPY . .
 
 # define the port
 
