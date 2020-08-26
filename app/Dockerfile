@@ -1,6 +1,6 @@
 # select base image to build our own customised node app microservice
 
-FROM node:alpine
+FROM node as APP
 
 # working directory inside the container
 
@@ -18,6 +18,12 @@ RUN npm install
 
 COPY . .
 
+FROM node:alpine
+
+COPY --from=app /usr/src/app /usr/src/app
+# This is the magic line that compresses the size
+
+WORKDIR /usr/src/app
 # define the port
 
 EXPOSE 3000
